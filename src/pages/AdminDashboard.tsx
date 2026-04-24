@@ -89,7 +89,7 @@ export function AdminDashboardPage() {
     return (
       <div className="min-h-screen bg-[#0A0F0D] flex flex-col items-center justify-center p-6 text-center">
         <h1 className="text-4xl font-black text-white uppercase italic mb-4">Admin Dashboard</h1>
-        <p className="text-white/50 mb-8 max-w-md">Log in with your administrator account to manage your inventory.</p>
+        <p className="text-white/50 mb-8 max-w-md">Log in with your administrator account (dulamprabhas99@gmail.com) to manage your inventory.</p>
         <button 
           onClick={handleLogin}
           className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase transition-all shadow-xl hover:scale-105"
@@ -106,7 +106,7 @@ export function AdminDashboardPage() {
         <div className="flex justify-between items-center mb-12">
           <div>
             <h1 className="text-4xl font-black text-white uppercase italic">Inventory Management</h1>
-            <p className="text-white/50">Admin Dashboard</p>
+            <p className="text-white/50">Logged in as {user.email}</p>
           </div>
           <button 
             onClick={() => signOut(auth)}
