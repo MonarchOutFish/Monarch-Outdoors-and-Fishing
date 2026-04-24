@@ -1,0 +1,64 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() { 
+      return isSignedIn() && (
+        request.auth.token.email == "dulamprabhas99@gmail.com" || 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      ); 
+    }
+
+    function isValidSubscriber(data) {
+      return data.keys().hasAll(['email', 'subscribedAt']) &&
+             data.keys().size() == 2 &&
+             data.email is string &&
+             data.email.size() > 5 &&
+             data.email.size() <= 100 &&
+             data.email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
+             data.subscribedAt == request.time;
+    }
+
+    match /subscribers/{subscriberId} {
+      allow create: if isValidSubscriber(incoming());
+      allow read, update, delete: if isAdmin();
+    }
+
+    function isValidGear(data) {
+      return data.keys().hasAll(['name', 'description', 'price', 'link', 'image', 'inStock', 'createdAt', 'updatedAt']) &&
+             data.keys().size() == 8 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.description is string && data.description.size() > 0 && data.description.size() <= 500 &&
+             data.price is string && data.price.size() > 0 && data.price.size() <= 50 &&
+             data.link is string && data.link.size() <= 1000 &&
+             data.image is string && data.image.size() > 0 && data.image.size() <= 1000 &&
+             data.inStock is bool &&
+             data.createdAt is timestamp &&
+             data.updatedAt is timestamp;
+    }
+
+    match /gear/{gearId} {
+      allow read: if true;
+      allow create: if isAdmin() && 
+                    isValidGear(incoming()) && 
+                    incoming().createdAt == request.time && 
+                    incoming().updatedAt == request.time;
+      allow update: if isAdmin() && 
+                    isValidGear(incoming()) && 
+                    incoming().createdAt == existing().createdAt && 
+                    incoming().updatedAt == request.time;
+      allow delete: if isAdmin();
+    }
+
+    match /admins/{uid} {
+      allow read: if isAdmin();
+      allow write: if false; 
+    }
+  }
+}

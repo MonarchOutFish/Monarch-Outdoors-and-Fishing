@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "Subscriber": {
+      "title": "Subscriber",
+      "description": "A user who subscribed to the newsletter",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "The user's email address"
+        },
+        "subscribedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the user subscribed"
+        }
+      },
+      "required": ["email", "subscribedAt"]
+    },
+    "Gear": {
+      "title": "Gear Item",
+      "description": "A piece of fishing gear listed in the vault",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "string" },
+        "image": { "type": "string" },
+        "link": { "type": "string" },
+        "inStock": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "description", "price", "image", "link", "inStock", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/subscribers/{subscriberId}": {
+      "schema": {
+        "$ref": "#/entities/Subscriber"
+      },
+      "description": "Newsletter subscribers"
+    },
+    "/gear/{gearId}": {
+      "schema": {
+        "$ref": "#/entities/Gear"
+      },
+      "description": "Fishing gear inventory"
+    }
+  }
+}
