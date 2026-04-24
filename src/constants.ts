@@ -2,7 +2,7 @@ import { Video, GearItem } from './types';
 
 // --- BRAND ASSETS ---
 // To use your own files:
-// 1. Upload your files (e.g., logo.png, portrait.jpg) to the root directory
+// 1. Upload your files (e.g., logo.png, portrait.jpg) to the /public directory
 // 2. Change the values below to match your filenames (e.g., logo: '/logo.png')
 export const BRAND = {
   logo: '/logo.png',
@@ -82,6 +82,16 @@ export const VIDEOS: Video[] = [
     category: 'Weird Catches',
     description: 'Flounders are one of the most weird looking, but fasinating fish in the world',
     duration: '00:14'
+  },
+  {
+    id: '6',
+    youtubeId: 'MPLLzdV724g', // Reusing first ID as a placeholder
+    title: 'Catching the BIG ONE',
+    views: '102',
+    publishedAt: '3 months ago',
+    category: 'Big Catches',
+    description: 'An epic day on the water where the line almost snapped.',
+    duration: '18:22'
   }
 ];
 
