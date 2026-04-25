@@ -171,9 +171,9 @@ export function Footer() {
           <div className="md:col-span-2 space-y-6">
             <div className="flex items-center gap-2">
               {BRAND.logo.includes('.') ? (
-                <img src={BRAND.logo} alt="Logo" className="w-8 h-8 object-contain" referrerPolicy="no-referrer" />
+                <img src={BRAND.logo} alt="Logo" className="w-12 h-12 object-contain" referrerPolicy="no-referrer" />
               ) : (
-                <div className="w-8 h-8 bg-orange-600 rounded flex items-center justify-center font-bold text-white">
+                <div className="w-12 h-12 bg-orange-600 rounded flex items-center justify-center font-bold text-white text-xl">
                   {BRAND.logo}
                 </div>
               )}
