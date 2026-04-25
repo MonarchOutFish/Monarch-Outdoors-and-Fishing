@@ -14,7 +14,6 @@ export function AdminDashboardPage() {
     name: '',
     description: '',
     price: '',
-    image: '',
     link: '',
     inStock: true
   });
@@ -39,7 +38,7 @@ export function AdminDashboardPage() {
   };
 
   const resetForm = () => {
-    setFormData({ name: '', description: '', price: '', image: '', link: '', inStock: true });
+    setFormData({ name: '', description: '', price: '', link: '', inStock: true });
     setEditingId(null);
   };
 
@@ -49,7 +48,6 @@ export function AdminDashboardPage() {
       name: item.name,
       description: item.description,
       price: item.price,
-      image: item.image,
       link: item.link,
       inStock: item.inStock
     });
@@ -89,7 +87,7 @@ export function AdminDashboardPage() {
     return (
       <div className="min-h-screen bg-[#0A0F0D] flex flex-col items-center justify-center p-6 text-center">
         <h1 className="text-4xl font-black text-white uppercase italic mb-4">Admin Dashboard</h1>
-        <p className="text-white/50 mb-8 max-w-md">Log in with your administrator account (dulamprabhas99@gmail.com) to manage your inventory.</p>
+        <p className="text-white/50 mb-8 max-w-md">Log in with your administrator account to manage your inventory.</p>
         <button 
           onClick={handleLogin}
           className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase transition-all shadow-xl hover:scale-105"
@@ -147,10 +145,6 @@ export function AdminDashboardPage() {
                   <label className="block text-xs font-bold uppercase text-white/50 tracking-widest mb-1">Product Link (URL)</label>
                   <input required type="url" value={formData.link} onChange={(e) => setFormData({...formData, link: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500" placeholder="https://amazon.com/..." />
                 </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase text-white/50 tracking-widest mb-1">Image URL</label>
-                  <input required type="url" value={formData.image} onChange={(e) => setFormData({...formData, image: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500" placeholder="https://unsplash.com/..." />
-                </div>
                 <div className="pt-4 flex gap-4">
                   {editingId && (
                     <button type="button" onClick={resetForm} className="flex-1 border border-white/20 text-white py-3 rounded-xl font-bold uppercase hover:bg-white/5 transition-all text-sm">
@@ -178,9 +172,6 @@ export function AdminDashboardPage() {
             <div className="grid sm:grid-cols-2 gap-6">
               {gear.map((item) => (
                 <div key={item.id} className="bg-[#0A1210] border border-white/10 p-4 rounded-3xl flex gap-4 items-start">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden bg-white/5 shrink-0">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start">
                       <h4 className="font-bold text-white uppercase truncate pr-2">{item.name}</h4>

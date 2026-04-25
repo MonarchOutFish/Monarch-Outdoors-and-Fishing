@@ -5,7 +5,7 @@ import { Video, GearItem } from './types';
 // 1. Upload your files (e.g., logo.png, portrait.jpg) to the /public directory
 // 2. Change the values below to match your filenames (e.g., logo: '/logo.png')
 export const BRAND = {
-  logo: '/logo.jpg',
+  logo: '/logo.png',
   fullName: 'Monarch Outdoors & Fishing Adventures',
   creatorName: 'Angler, Prabhas Dulam',
   portraitImage: '/me.jpg',

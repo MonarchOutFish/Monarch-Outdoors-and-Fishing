@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ShoppingCart, Send, Instagram, Twitter, Facebook, ExternalLink, Youtube, Loader2, CheckCircle2 } from 'lucide-react';
 import { BRAND } from '../constants';
@@ -35,19 +35,13 @@ export function GearSection() {
           <div className="grid md:grid-cols-3 gap-8">
             {featuredGear.map((item) => (
               <Link to="/gear" key={item.id} className="block group bg-[#0A1210] border border-white/5 rounded-3xl overflow-hidden hover:border-orange-500/50 transition-all shadow-xl">
-                <div className="aspect-square overflow-hidden relative">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="p-8 pb-4 min-h-[100px] relative flex flex-col justify-end bg-white/5 border-b border-white/10">
                   <div className="absolute top-4 right-4 bg-orange-600 text-white font-black px-3 py-1 rounded-full text-xs">
                     {item.price}
                   </div>
+                  <h4 className="text-xl mt-6 font-black text-white uppercase tracking-tight">{item.name}</h4>
                 </div>
                 <div className="p-8">
-                  <h4 className="text-xl font-black text-white uppercase mb-2 tracking-tight">{item.name}</h4>
                   <p className="text-white/50 text-sm italic mb-6 leading-relaxed">
                     "{item.description}"
                   </p>

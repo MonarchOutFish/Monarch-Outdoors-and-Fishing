@@ -8,7 +8,6 @@ export interface GearItem {
   description: string;
   price: string;
   link: string;
-  image: string;
   inStock: boolean;
   createdAt?: any;
   updatedAt?: any;

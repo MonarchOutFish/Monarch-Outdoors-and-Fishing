@@ -36,22 +36,16 @@ export function GearVaultPage() {
           <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-8">
             {gear.map((item) => (
               <div key={item.id} className="group bg-[#0A1210] border border-white/5 rounded-3xl overflow-hidden hover:border-orange-500/50 transition-all shadow-xl flex flex-col h-full relative">
-                <div className="aspect-square overflow-hidden relative bg-black/20">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="p-6 pb-2 min-h-[120px] relative flex flex-col justify-end bg-white/5 border-b border-white/10">
                   <div className="absolute top-4 right-4 bg-orange-600 text-white font-black px-3 py-1 rounded-full text-xs">
                     {item.price}
                   </div>
                   <div className={`absolute top-4 left-4 font-black px-3 py-1 rounded-full text-[10px] tracking-widest uppercase ${item.inStock ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}`}>
                     {item.inStock ? 'In Stock' : 'Out of Stock'}
                   </div>
+                  <h4 className="text-xl mt-8 font-black text-white uppercase tracking-tight">{item.name}</h4>
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <h4 className="text-lg font-black text-white uppercase mb-2 tracking-tight">{item.name}</h4>
                   <p className="text-white/50 text-xs italic mb-6 leading-relaxed flex-1">
                     "{item.description}"
                   </p>
